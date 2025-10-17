@@ -1,22 +1,31 @@
 // Minimal client for loading and rendering the estimate
 
 const fmt = new Intl.NumberFormat('en-US');
+const compactFmt = new Intl.NumberFormat('en-US', {
+  notation: 'compact',
+  maximumFractionDigits: 1,
+});
 const pctFmt = new Intl.NumberFormat('en-US', { style: 'percent', maximumFractionDigits: 1 });
 
 function byId(id) { return document.getElementById(id); }
 
 function setText(id, text) { const el = byId(id); if (el) el.textContent = text; }
 
-function animateCount(el, target, duration = 900) {
+function animateCount(el, target, formatter = fmt, duration = 900) {
   const start = 0;
   const t0 = performance.now();
   const tick = (t) => {
     const p = Math.min(1, (t - t0) / duration);
-    const val = Math.floor(start + (target - start) * p);
-    el.textContent = fmt.format(val);
+    const eased = easeOutCubic(p);
+    const val = Math.floor(start + (target - start) * eased);
+    el.textContent = formatter(val);
     if (p < 1) requestAnimationFrame(tick);
   };
   requestAnimationFrame(tick);
+}
+
+function easeOutCubic(x) {
+  return 1 - Math.pow(1 - x, 3);
 }
 
 function setRing(percent) {
@@ -43,8 +52,8 @@ async function loadEstimate() {
     const fallback = {
       updated_at: new Date().toISOString(),
       scope: 'Placeholder estimate',
-      ai_lines: 11200000000,
-      human_lines: 23900000000,
+      ai_lines: 6200000000,
+      human_lines: 17900000000,
       notes: 'Fallback data bundled in app.js. Replace with real data in data/estimate.json.'
     };
     render(fallback);
@@ -62,9 +71,9 @@ function render(data) {
   const totalLinesEl = byId('totalLines');
   const aiPctEl = byId('aiPct');
 
-  if (aiLinesEl) animateCount(aiLinesEl, ai);
-  if (humanLinesEl) animateCount(humanLinesEl, human);
-  if (totalLinesEl) animateCount(totalLinesEl, total);
+  setStatNumber(aiLinesEl, ai);
+  setStatNumber(humanLinesEl, human);
+  setStatNumber(totalLinesEl, total);
   if (aiPctEl) aiPctEl.textContent = pctFmt.format(aiPct);
   setRing(aiPct);
 
@@ -86,6 +95,21 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
+}
+
+function formatStat(value) {
+  if (value >= 1_000_000) {
+    return compactFmt.format(value);
+  }
+  return fmt.format(value);
+}
+
+function setStatNumber(el, value) {
+  if (!el) return;
+  const formatter = (n) => formatStat(n);
+  animateCount(el, value, formatter);
+  el.setAttribute('title', fmt.format(value));
+  el.dataset.fullValue = String(value);
 }
 
 loadEstimate();
