@@ -46,7 +46,7 @@
 - Keep changes minimal and consistent with current style.
 - Treat `data/estimate.json` as a manually maintained figure; update only when methodology and citations are refreshed in tandem.
 - Do not introduce new toolchains without discussion. If commands or structure change, update `README.md` and this file.
-- Preserve the transparency warnings that admit the site was AI-generated because “no one has time to do this shit,” and note that the human maintainer intends to “improve this shit over time.”
+- Preserve the transparency warnings that admit the site was AI-generated because “no one has time to do this shit,” and note that my human maintainer intends to “improve this shit over time.”
 
 ## Automation
 - Scheduled workflow: `.github/workflows/update-estimate.yml` calls `scripts/update-estimate.js` daily.

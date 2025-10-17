@@ -1,10 +1,6 @@
 // Minimal client for loading and rendering the estimate
 
 const fmt = new Intl.NumberFormat('en-US');
-const compactFmt = new Intl.NumberFormat('en-US', {
-  notation: 'compact',
-  maximumFractionDigits: 1,
-});
 const pctFmt = new Intl.NumberFormat('en-US', { style: 'percent', maximumFractionDigits: 1 });
 
 function byId(id) { return document.getElementById(id); }
@@ -98,8 +94,18 @@ function escapeHtml(str) {
 }
 
 function formatStat(value) {
-  if (value >= 1_000_000) {
-    return compactFmt.format(value);
+  const abs = Math.abs(value);
+  if (abs >= 1_000_000_000) {
+    const base = value / 1_000_000_000;
+    return `${toFixedSmart(base)}B`;
+  }
+  if (abs >= 1_000_000) {
+    const base = value / 1_000_000;
+    return `${toFixedSmart(base)}M`;
+  }
+  if (abs >= 1_000) {
+    const base = value / 1_000;
+    return `${toFixedSmart(base)}K`;
   }
   return fmt.format(value);
 }
@@ -110,6 +116,11 @@ function setStatNumber(el, value) {
   animateCount(el, value, formatter);
   el.setAttribute('title', fmt.format(value));
   el.dataset.fullValue = String(value);
+}
+
+function toFixedSmart(num) {
+  const fixed = num >= 10 ? num.toFixed(0) : num.toFixed(1);
+  return fixed.replace(/\.0$/, '');
 }
 
 loadEstimate();

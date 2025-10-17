@@ -51,7 +51,7 @@ Enable Pages in repo settings:
 
 ### Transparency note
 
-- The initial copy and methodology were produced by AI because, in the owner’s words, “no one has time to do this shit.” Expect the human maintainer to “improve this shit over time” as better data appears.
+- The initial copy and methodology were produced by AI because, in the owner’s words, “no one has time to do this shit.” Expect my human maintainer to “improve this shit over time” as better data appears.
 
 ### Roadmap
 
