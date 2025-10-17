@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI vs Humans — Code on GitHub</title>
+    <meta name="description" content="Live estimate of how much code on GitHub is written by AI versus humans.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <span class="logo" aria-hidden="true">🤖</span>
+          <span class="brand-text">AI vs Humans</span>
+        </div>
+        <nav class="nav">
+          <a href="/" class="nav-link active">Overview</a>
+          <a href="/methodology.html" class="nav-link">Methodology</a>
+          <a href="https://github.com/ryanjarv/ai-vs-humans" class="nav-link" target="_blank" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container main">
+      <section class="hero">
+        <h1 class="title">How much GitHub code is AI‑written?</h1>
+        <p class="subtitle">Live estimate across public repositories</p>
+      </section>
+
+      <section class="cards">
+        <div class="card focus">
+          <div class="ring" role="img" aria-label="AI vs Human share">
+            <svg viewBox="0 0 120 120" class="ring-svg" aria-hidden="true">
+              <circle cx="60" cy="60" r="54" class="ring-bg" />
+              <circle cx="60" cy="60" r="54" class="ring-fg" id="ringFg" />
+            </svg>
+            <div class="ring-center">
+              <div class="ring-number" id="aiPct">--%</div>
+              <div class="ring-label">AI share</div>
+            </div>
+          </div>
+          <div class="legend">
+            <div class="legend-item">
+              <span class="dot ai"></span>
+              <span>AI-authored</span>
+            </div>
+            <div class="legend-item">
+              <span class="dot human"></span>
+              <span>Human-authored</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card stats">
+          <div class="stat">
+            <div class="stat-label">AI-authored lines</div>
+            <div class="stat-number" id="aiLines">—</div>
+          </div>
+          <div class="divider"></div>
+          <div class="stat">
+            <div class="stat-label">Human-authored lines</div>
+            <div class="stat-number" id="humanLines">—</div>
+          </div>
+          <div class="divider"></div>
+          <div class="stat">
+            <div class="stat-label">Total lines tracked</div>
+            <div class="stat-number" id="totalLines">—</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>What you’re seeing</h2>
+          <div class="pill" id="updatedAt">Updated —</div>
+        </div>
+        <p>
+          This site shows an estimate of AI versus human authored code
+          hosted on GitHub. See the <a href="/methodology.html">methodology</a> for
+          how we compute and keep this updated.
+        </p>
+        <div id="notes" class="notes"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          Built with ❤️ for transparent AI metrics.
+        </div>
+        <div class="footer-links">
+          <a href="/methodology.html">Methodology</a>
+          <a href="https://github.com/ryanjarv/ai-vs-humans" target="_blank" rel="noopener">Source</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/assets/app.js" type="module"></script>
+  </body>
+  </html>
+

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Methodology — AI vs Humans</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <span class="logo" aria-hidden="true">🤖</span>
+          <span class="brand-text">AI vs Humans</span>
+        </div>
+        <nav class="nav">
+          <a href="/" class="nav-link">Overview</a>
+          <a href="/methodology.html" class="nav-link active">Methodology</a>
+          <a href="https://github.com/ryanjarv/ai-vs-humans" class="nav-link" target="_blank" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container main">
+      <section class="hero small">
+        <h1 class="title">Methodology</h1>
+        <p class="subtitle">How we estimate AI vs human code</p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Overview</h2>
+        </div>
+        <p>
+          There is no perfect, universally accepted measure of how much code
+          hosted on GitHub is authored by AI systems versus humans. This project
+          publishes a transparent estimate, with its assumptions and limits made
+          clear.
+        </p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Computation</h2>
+        </div>
+        <ul class="bullets">
+          <li>
+            Data source: a JSON file in this repository at <code>data/estimate.json</code>.
+            It is intended to be updated periodically by a GitHub Actions workflow
+            using public GitHub APIs and documented heuristics.
+          </li>
+          <li>
+            Metric: we display an estimated share (percentage) of AI-authored
+            lines-of-code across public repositories, plus absolute counts used
+            for the calculation.
+          </li>
+          <li>
+            Defaults: until the automated pipeline is finalized, values are
+            placeholders you can update by editing <code>data/estimate.json</code>.
+          </li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Limitations</h2>
+        </div>
+        <ul class="bullets">
+          <li>
+            Detection: most AI coding tools do not annotate code with reliable
+            markers, making precise attribution difficult without repository-level
+            analysis and opt-in signals.
+          </li>
+          <li>
+            Coverage: API rate limits and sampling strategies introduce
+            uncertainty when extrapolating to all public repositories.
+          </li>
+          <li>
+            Scope: this estimate focuses on public GitHub code and does not
+            include private repositories or other platforms.
+          </li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Contributing</h2>
+        </div>
+        <p>
+          Suggestions for better signals or data sources are welcome. Open an
+          issue or PR in the GitHub repository linked above.
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          Built with ❤️ for transparent AI metrics.
+        </div>
+        <div class="footer-links">
+          <a href="/methodology.html">Methodology</a>
+          <a href="https://github.com/ryanjarv/ai-vs-humans" target="_blank" rel="noopener">Source</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+  </html>
+
