@@ -43,8 +43,8 @@ async function loadEstimate() {
     const fallback = {
       updated_at: new Date().toISOString(),
       scope: 'Placeholder estimate',
-      ai_lines: 6000000000,
-      human_lines: 18000000000,
+      ai_lines: 11200000000,
+      human_lines: 23900000000,
       notes: 'Fallback data bundled in app.js. Replace with real data in data/estimate.json.'
     };
     render(fallback);
@@ -89,4 +89,3 @@ function escapeHtml(str) {
 }
 
 loadEstimate();
-

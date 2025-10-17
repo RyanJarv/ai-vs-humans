@@ -7,7 +7,8 @@
   - `styles.css` — global styles (CSS variables in `:root`)
   - `app.js` — data fetch + animations
   - `favicon.svg`
-- `data/estimate.json` — source of truth for numbers
+- `data/estimate.json` — source of truth for numbers (curated manually, not rewritten by automation)
+- `data/estimate_action.json` — heuristic sample written by the scheduled workflow
 - `CNAME`, `.nojekyll` — GitHub Pages config (keep both)
 
 ## Build, Test, and Development Commands
@@ -43,8 +44,10 @@
 
 ## Agent-Specific Instructions
 - Keep changes minimal and consistent with current style.
+- Treat `data/estimate.json` as a manually maintained figure; update only when methodology and citations are refreshed in tandem.
 - Do not introduce new toolchains without discussion. If commands or structure change, update `README.md` and this file.
 
 ## Automation
 - Scheduled workflow: `.github/workflows/update-estimate.yml` calls `scripts/update-estimate.js` daily.
-- The script samples public code via the GitHub API looking for explicit AI markers (heuristic, low-volume) and updates `data/estimate.json`.
+- The script samples public code via the GitHub API looking for explicit AI markers (heuristic, low-volume) and writes to `data/estimate_action.json` (inspection only, not displayed).
+- Sampled languages: JavaScript, TypeScript, Python, Go. Adjust `LANGS` in the script if you broaden coverage (watch rate limits).

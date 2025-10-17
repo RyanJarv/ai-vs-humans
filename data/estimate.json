@@ -1,7 +1,7 @@
 {
-  "updated_at": "2025-10-17T00:25:33Z",
-  "scope": "Public GitHub repositories (estimate)",
-  "ai_lines": 11200000000,
-  "human_lines": 23900000000,
-  "notes": "Estimate triangulated from GitHub Octoverse 2024 (Copilot acceptance ~35%), JetBrains 2025 developer survey, and repo-level heuristics in scripts/update-estimate.js."
+  "updated_at": "2025-10-17T16:00:00Z",
+  "scope": "Public GitHub codebase (curated synthesis of external research)",
+  "ai_lines": 6200000000,
+  "human_lines": 17900000000,
+  "notes": "Headline percentage derived from Daniotti et al. (2025) Python commit study scaled by language/adoption discounts informed by GitHub Copilot telemetry."
 }

@@ -23,6 +23,7 @@ jobs:
       - name: Run estimator
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ESTIMATE_OUTPUT_PATH: data/estimate_action.json
         run: |
           node scripts/update-estimate.js
 
@@ -31,10 +32,9 @@ jobs:
           if [[ -n "$(git status --porcelain)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add data/estimate.json
+            git add data/estimate_action.json
             git commit -m "chore(data): refresh estimate"
             git push
           else
             echo "No changes to commit"
           fi
-
