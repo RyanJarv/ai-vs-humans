@@ -35,6 +35,10 @@ body { margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto
 .cards { display: grid; grid-template-columns: 1fr; gap: 16px; margin: 24px 0; }
 @media (min-width: 880px) { .cards { grid-template-columns: 1.3fr 1fr; } }
 
+.callout { margin: 16px 0 8px; padding: 14px 18px; border-radius: 12px; border: 1px solid rgba(244, 114, 182, 0.4); background: rgba(244, 114, 182, 0.12); color: #9d174d; display: flex; align-items: flex-start; gap: 12px; }
+.callout strong { color: #be123c; }
+.callout-icon { font-size: 20px; line-height: 1; }
+
 .card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 18px; box-shadow: var(--shadow); }
 .card.focus { display: grid; grid-template-columns: 1fr; gap: 12px; align-items: center; }
 @media (min-width: 540px) { .card.focus { grid-template-columns: 1fr auto; } }
@@ -90,4 +94,6 @@ code { background: rgba(2,6,23,0.06); padding: 2px 6px; border-radius: 6px; }
   .pill { color: #c7d2fe; }
   .footer-inner { color: #93c5fd; }
   .footer-links a { color: #93c5fd; }
+  .callout { background: rgba(219, 39, 119, 0.18); border-color: rgba(244, 114, 182, 0.5); color: #fda4af; }
+  .callout strong { color: #f472b6; }
 }
